@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#39111f">
+  <meta name="description" content="Batch Code Checker - look up product manufacturing and expiry information.">
+  <title>Batch Code Checker</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <div class="brandmark">⌕</div>
+      <div>
+        <p class="eyebrow">PRODUCT DATE LOOKUP</p>
+        <h1>Batch Code Checker</h1>
+        <p class="sub">Check a product batch against your selected sources.</p>
+      </div>
+    </header>
+
+    <section class="panel">
+      <form id="lookup-form">
+        <label for="brand">Company / Brand Name</label>
+        <input id="brand" name="brand" autocomplete="organization" placeholder="e.g. Nivea" required maxlength="100">
+        <label for="batch">Batch Code</label>
+        <input id="batch" name="batch" placeholder="e.g. B5110" required maxlength="80">
+        <button class="primary" type="submit">SEARCH BATCH CODE</button>
+      </form>
+      <p class="hint">Your search opens the four selected checking websites in separate tabs. Enter the code on each site and compare the results.</p>
+    </section>
+
+    <section id="results" class="panel hidden" aria-live="polite">
+      <div class="section-head">
+        <h2>Search sources</h2><span class="tag">4 websites</span>
+      </div>
+      <p id="current-product" class="current"></p>
+      <div id="source-list" class="sources"></div>
+      <p class="notice"><strong>Important:</strong> This version does not read or verify dates automatically. Record only dates shown by the source or printed on the product. Mark calculated dates as estimates.</p>
+      <div class="manual">
+        <h2>Record verified result</h2>
+        <label for="mfg">Manufacturing date</label>
+        <input id="mfg" type="date">
+        <label for="expiry">Expiry date</label>
+        <input id="expiry" type="date">
+        <label for="status">Date type</label>
+        <select id="status">
+          <option value="Verified on source">Verified on source</option>
+          <option value="Printed on product">Printed on product</option>
+          <option value="Estimated - not confirmed">Estimated - not confirmed</option>
+          <option value="Not found">Not found</option>
+        </select>
+        <label for="notes">Notes / source result</label>
+        <textarea id="notes" rows="3" placeholder="Add source name, screenshot details or notes"></textarea>
+        <button id="save" class="secondary" type="button">SAVE TO THIS DEVICE</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head"><h2>Saved searches</h2><button id="clear" class="text-button" type="button">Clear history</button></div>
+      <p class="hint">Saved on this device only. This first version does not sync between phones or accounts.</p>
+      <div id="history" class="history"><p class="empty">No saved searches yet.</p></div>
+    </section>
+
+    <footer>Batch Code Checker · Always confirm dates with the product manufacturer or printed packaging.</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
